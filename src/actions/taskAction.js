@@ -1,6 +1,6 @@
 import { FETCH_TASK, FETCH_LOGIN } from './types';
 
-const fetchTasks = () => dispatch => {
+export const fetchTasks = () => dispatch => {
     fetch('https://cstonboarding.azurewebsites.net/tasks/assigned?page=1&limit=10&order=created&orderMethod=DESC')
         .then(res => res.json())
         .then(data => dispatch({
@@ -9,3 +9,10 @@ const fetchTasks = () => dispatch => {
 
         }));
 }
+
+
+
+
+
+
+//DISPATCH TO THIS ACTION TO THE REDUCER

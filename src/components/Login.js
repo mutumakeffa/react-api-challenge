@@ -33,18 +33,22 @@ class Login extends Component {
         
 
         this.props.LoginUser(userData);
-        // this.props.isAuthenticated;
+        const { isAuthenticated } = this.props.auth;
+
+        if(isAuthenticated) {
+            return <Redirect to='/tasks' />;
+        }
+    
         
     }
 
-    //Redirect if logged in
-    // if(isAuthenticated) {
-    //     return <Redirect to='/tasks' />;
-    // }
 
+    // Redirect if logged in
+    
 
 
     render() {
+
         return (
             <div className="mt-5 d-flex justify-content-center">
                 <div className="mt-5 p-3 login-container shadow">

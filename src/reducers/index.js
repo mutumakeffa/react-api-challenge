@@ -2,12 +2,14 @@
 //REDUCER --> DESCRIBES HOW AN ACTION WILL TRANSFORM A STATE TO THE NEXT STATE
 
 import { combineReducers } from 'redux';
-import LoginReducer from './loginReducer';
 import TaskReducer from './taskReducer';
-import  auth from './auth'
+import  auth from './auth';
+import setAuthToken from '../utils/setAuthToken';
+
+
+setAuthToken(localStorage.accessToken);
 
 const allReducers = combineReducers({
-    LoginReducer,
     TaskReducer,
     auth
 });

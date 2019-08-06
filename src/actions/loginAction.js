@@ -1,7 +1,5 @@
 import { FETCH_TASK, LOGIN_SUCCESS, LOGIN_ERROR, USER_LOADED, AUTH_ERROR } from './types';
 import axios from 'axios';
-import setAuthToken from  '../utils/setAuthToken';
-
 
 
 //This action is a fxn that is going to fetch login credentials from the url
@@ -9,19 +7,58 @@ import setAuthToken from  '../utils/setAuthToken';
 const BASE_URL = 'https://kazi.azurewebsites.net';
 
 //Load user
-export const LoadUser = () => async dispatch =>{
-    if(localStorage.accessToken){
-        setAuthToken(localStorage.accessToken);
-    }
-    try {
+// export const LoadUser = () => async dispatch =>{
+//     if(localStorage.accessToken){
+//         setAuthToken(localStorage.accessToken);
+//     }
+//     try {
+//         const res = await axios.get(BASE_URL)
+//     } catch (err) {
         
-    } catch (err) {
-        
-    }
+//     }
 
-};
+// };
 
 //Login user
+
+export const LoginUser = (data) => dispatch => {   
+    const url = `${BASE_URL}/personnel/login`;
+
+    try {
+        axios.post(url, data)
+        .then(res => dispatch({
+            type: LOGIN_SUCCESS,
+            payload: res.data
+        }));
+    } catch (error) {
+        error = error.res.data.error
+
+        if(error) {
+            //REDIRECT BACK TO THE LOGIN PAGE OR ALERT MSG 
+            console.log(error)
+        }
+
+        dispatch({
+            type: LOGIN_ERROR
+        })
+    }
+
+}
+
+
+
+
+
+//DISPATCH --> SEND THE ACTIONS TO THE REDUCER
+//WE ARE ABLE TO DISPATCH MORE THAN ONE ACTION
+
+
+
+
+
+
+
+
 // export const LoginUser = (phone, password) => async dispatch => {
     // const config = {
     //     headers : {
@@ -53,39 +90,3 @@ export const LoadUser = () => async dispatch =>{
 //     }
 
 // }
-
-
-
-
-// Alternate method
-
-
-export const LoginUser = (data) => dispatch => {   
-    const url = `${BASE_URL}/personnel/login`;
-
-    try {
-        axios.post(url, data)
-        .then(res => dispatch({
-            type: LOGIN_SUCCESS,
-            payload: res.data
-        }));
-    } catch (error) {
-        error = error.response.data.error
-
-        if(error) {
-            //REDIRECT BACK TO THE LOGIN PAGE
-        }
-
-        dispatch({
-            type: LOGIN_ERROR
-        })
-    }
-
-}
-
-
-
-
-
-//DISPATCH --> SEND THE ACTIONS TO THE REDUCER
-//WE ARE ABLE TO DISPATCH MORE THAN ONE ACTION

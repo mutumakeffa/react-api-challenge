@@ -4,6 +4,7 @@ import '../App.css';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { LoginUser } from  '../actions/loginAction';
+import { Redirect } from "react-router-dom";
 
 class Login extends Component {
     constructor(props) {
@@ -32,8 +33,14 @@ class Login extends Component {
         
 
         this.props.LoginUser(userData);
+        // this.props.isAuthenticated;
         
     }
+
+    //Redirect if logged in
+    // if(isAuthenticated) {
+    //     return <Redirect to='/tasks' />;
+    // }
 
 
 
@@ -75,7 +82,7 @@ class Login extends Component {
 
 Login.propTypes = {
     LoginUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.func.isRequired,
   };
 
 

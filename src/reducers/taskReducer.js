@@ -1,19 +1,17 @@
-// import { FETCH_TASK, LOGIN_SUCCESS } from '../actions/types';
+import { FETCH_TASK } from '../actions/types';
 
-// const initialState = {
-//     tasks: [],
-//     task: {}
-// }
+const initialState = {
+    data: []
+}
 
-// export default function(state = initialState, action ) {
-//     switch(action.type){
-//         case FETCH_TASK:
-//             console.log('reducer');
-//             return{
-//                 ...state,
-//                 tasks: action.payload
-//             };
-//         default:
-//             return state;
-//     }
-// }
+export default function(state = initialState, action ) {
+    switch(action.type){
+        case FETCH_TASK:
+            return{
+                ...state,
+                data: action.payload.tasks
+            };
+        default:
+            return state;
+    }
+}

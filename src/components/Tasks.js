@@ -11,7 +11,8 @@ class Tasks extends Component {
         const displayTask = this.props.TaskReducer.map(task => (
             <div key={task.id}>
                 <p>{task.customer_first_name}</p>
-                <p>{task.personnel_first_names}</p>
+                <p>{task}</p>
+                
             </div>
         ));
         return (
@@ -29,6 +30,7 @@ class Tasks extends Component {
 
 const mapStateToProps = state => ({
     TaskReducer: state.TaskReducer.tasks
+
 });
 
 export default connect(mapStateToProps, {fetchTasks} )(Tasks);

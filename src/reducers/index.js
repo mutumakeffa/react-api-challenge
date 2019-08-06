@@ -4,10 +4,12 @@
 import { combineReducers } from 'redux';
 import LoginReducer from './loginReducer';
 import TaskReducer from './taskReducer';
+import  auth from './auth'
 
 const allReducers = combineReducers({
     LoginReducer,
-    TaskReducer
+    TaskReducer,
+    auth
 });
 
 export default allReducers;

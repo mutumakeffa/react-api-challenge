@@ -1,35 +1,40 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';              //CONNECTS A REACT COMPONENT WITH A REDUX STORE THAT WAS PROVIDED BY THE PROVIDER COMPONENT
 import { fetchTasks } from '../actions/taskAction';
+import setAuthToken from '../utils/setAuthToken'
 
 class Tasks extends Component {
-    componentWillMount() {
-        //PLACE THE FETCHTASKS INTO A PROP
-        this.props.fetchTasks();
-    }
+   
     render() {
-        const displayTask = this.props.TaskReducer.map(task => (
-            <div key={task.id}>
+        // setAuthToken(localStorage.accessToken);
+        const { data } = this.props.TaskReducer;
+         
+        const displayTask = data.length ? (data.map(task => (
+            <div key={task.tasks_id}>
                 <p>{task.customer_first_name}</p>
                 <p>{task}</p>
                 
             </div>
-        ));
+        ))) : (
+            <div>No tasks rendered</div>
+        );
+        
+        
         return (
             <div>
-                <h1>Display tasks</h1>
+                <h1>Display tasks</h1> 
                 <p>{displayTask}</p>
 
             </div>
         )
     }
 }    
- 
+
 
 //THIS IS WHERE WE WANT TO MAP OUR STATE TO PROPERTIES OF THE COMPONENT SO AS TO BE ABLE TO USE IT INSIDE OUR COMPONENT
 
 const mapStateToProps = state => ({
-    TaskReducer: state.TaskReducer.tasks
+    TaskReducer: state.TaskReducer
 
 });
 

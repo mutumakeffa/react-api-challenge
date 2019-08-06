@@ -1,4 +1,4 @@
-import { FETCH_TASK, LOGIN_SUCCESS, LOGIN_ERROR, USER_LOADED, AUTH_ERROR} from '../actions/types';
+import { LOGIN_SUCCESS, LOGIN_ERROR} from '../actions/types';
 import setAuthToken from  '../utils/setAuthToken';
 
 

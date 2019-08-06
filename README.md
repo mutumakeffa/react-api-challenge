@@ -11,3 +11,5 @@ To run during production
 - This builds the app for production to the `build` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
+
+Deploy the code to Heroku using the Heroku cli. 

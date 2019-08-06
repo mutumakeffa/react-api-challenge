@@ -1,23 +1,10 @@
-import { FETCH_TASK, LOGIN_SUCCESS, LOGIN_ERROR, USER_LOADED, AUTH_ERROR } from './types';
+import { LOGIN_SUCCESS, LOGIN_ERROR } from './types';
 import axios from 'axios';
 
 
 //This action is a fxn that is going to fetch login credentials from the url
 
 const BASE_URL = 'https://kazi.azurewebsites.net';
-
-//Load user
-// export const LoadUser = () => async dispatch =>{
-//     if(localStorage.accessToken){
-//         setAuthToken(localStorage.accessToken);
-//     }
-//     try {
-//         const res = await axios.get(BASE_URL)
-//     } catch (err) {
-        
-//     }
-
-// };
 
 //Login user
 

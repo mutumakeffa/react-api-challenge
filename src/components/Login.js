@@ -33,21 +33,16 @@ class Login extends Component {
         
 
         this.props.LoginUser(userData);
+        
+    }
+
+    render() {
+        // Redirect if logged in
         const { isAuthenticated } = this.props.auth;
 
         if(isAuthenticated) {
             return <Redirect to='/tasks' />;
         }
-    
-        
-    }
-
-
-    // Redirect if logged in
-    
-
-
-    render() {
 
         return (
             <div className="mt-5 d-flex justify-content-center">
@@ -87,7 +82,7 @@ class Login extends Component {
 Login.propTypes = {
     LoginUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
-  };
+};
 
 
 const mapPropsToState = state => ({

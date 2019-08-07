@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';              //CONNECTS A REACT COMPONENT WITH A REDUX STORE THAT WAS PROVIDED BY THE PROVIDER COMPONENT
 import { fetchTasks } from '../actions/taskAction';
+import PropTypes from 'prop-types';
 
 class Tasks extends Component {
    
     render() {
-        const { data } = this.props.TaskReducer;
+        const { data } = this.props.taskReducer;
          
         const displayTask = data.length ? (data.map(task => (
             <div key={task.tasks_id}>
@@ -29,10 +30,15 @@ class Tasks extends Component {
 }    
 
 
+Tasks.propTypes = {
+    fetchTasks: PropTypes.func.isRequired,
+    taskReducer: PropTypes.func.isRequired,
+};
+
 //THIS IS WHERE WE WANT TO MAP OUR STATE TO PROPERTIES OF THE COMPONENT SO AS TO BE ABLE TO USE IT INSIDE OUR COMPONENT
 
 const mapStateToProps = state => ({
-    TaskReducer: state.TaskReducer
+    taskReducer: state.taskReducer
 
 });
 

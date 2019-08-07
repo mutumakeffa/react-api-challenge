@@ -9,14 +9,10 @@ const url = `${BASE_URL}/tasks/assigned?page=1&limit=10&order=created&orderMetho
 
 export const fetchTasks = () => dispatch =>{
 
-    if(localStorage.accessToken){
-        setAuthToken(localStorage.accessToken);
-    
-    }
-
+    const token = localStorage.getItem('accessToken');
     try {
         // const res = axios.get(url, setAuthToken(localStorage.accessToken));
-        const res = axios.get(url, { headers: setAuthToken(localStorage.accessToken)});
+        const res = axios.get(url, { headers:{'Authorization': `Bearer ${token}`}});
                 
         res.then(data => dispatch({
             type: FETCH_TASK,

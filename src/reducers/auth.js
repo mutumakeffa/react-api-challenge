@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOGIN_ERROR} from '../actions/types';
+import { LOGIN_SUCCESS, LOGIN_ERROR, USER_LOADED, AUTH_ERROR} from '../actions/types';
 import setAuthToken from  '../utils/setAuthToken';
 
 
@@ -22,12 +22,20 @@ export default function(state=initialState, action) {
                 loading: false
             }
         case LOGIN_ERROR:
+        case AUTH_ERROR:
             localStorage.removeItem('accessToken');
             return{
                 ...state,
                 accessToken: null,
                 isAuthenticated: false,
                 loading: false 
+            }
+        case USER_LOADED:
+            return{
+                ...state,
+                isAuthenticated: true,
+                loading: false,
+                user: action.payload
             }
         default:
             return state;

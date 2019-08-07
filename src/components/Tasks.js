@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';              //CONNECTS A REACT COMPONENT WITH A REDUX STORE THAT WAS PROVIDED BY THE PROVIDER COMPONENT
 import { fetchTasks } from '../actions/taskAction';
-import setAuthToken from '../utils/setAuthToken'
 
 class Tasks extends Component {
    
     render() {
-        // setAuthToken(localStorage.accessToken);
         const { data } = this.props.TaskReducer;
          
         const displayTask = data.length ? (data.map(task => (

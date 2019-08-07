@@ -6,9 +6,9 @@ const initialState = {
 }
 
 export default function(state = initialState, action ) {
-    // setAuthToken(localStorage.accessToken);
     switch(action.type){
         case FETCH_TASK:
+            setAuthToken(action.payload.accessToken);
             return{
                 ...state,
                 data: action.payload.tasks
